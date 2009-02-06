@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <add-node path="/api">
+    <symbol type="manual" cname="cairo_t" name="Cairo.Context" />
+  </add-node>
+  <add-node path="/api">
+    <symbol type="manual" cname="cairo_surface_t" name="Cairo.Surface" />
+  </add-node>
+  <add-node path="/api">
+    <symbol type="manual" cname="GdkPixbuf" name="Gdk.Pixbuf" />
+  </add-node>
+  <add-node path="/api">
+    <symbol type="manual" cname="GdkColor" name="Gdk.Color" />
+  </add-node>
+  <attr path="/api/namespace/enum[@name='Permissions']" name="hidden">1</attr>
+</metadata>
+

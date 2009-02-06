@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gapi-parser-input>
+  <api filename="poppler-sharp/poppler-api.raw">
+    <library name="poppler-glib">
+      <namespace name="Poppler">
+        <!-- This should be generated -->
+        <dir>/home/jacinto/repo/poppler/glib</dir>
+      </namespace>
+    </library>
+  </api>
+</gapi-parser-input>
