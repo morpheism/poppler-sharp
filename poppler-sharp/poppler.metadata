@@ -12,5 +12,12 @@
   <attr path="/api/namespace/object[@name='AnnotFreeText']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='AnnotMarkup']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='AnnotText']" name="parent">GObject</attr>
+  <attr path="/api/namespace/struct[@name='AnnotCalloutLine']" name="opaque">false</attr>
+  <attr path="/api/namespace/struct[@name='Color']" name="opaque">false</attr>
+  <attr path="/api/namespace/struct[@name='Dest']" name="opaque">false</attr>
+  <attr path="/api/namespace/struct[@name='FormFieldMapping']" name="opaque">false</attr>
+  <attr path="/api/namespace/struct[@name='ImageMapping']" name="opaque">false</attr>
+  <attr path="/api/namespace/struct[@name='LinkMapping']" name="opaque">false</attr>
+  <attr path="/api/namespace/struct[@name='PageTransition']" name="opaque">false</attr>
+  <attr path="/api/namespace/struct[@name='Rectangle']" name="opaque">false</attr>
 </metadata>
-
