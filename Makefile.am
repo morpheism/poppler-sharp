@@ -4,12 +4,17 @@ EXTRA_DIST = \
 	poppler-sharp/poppler-api.raw \
 	poppler-sharp/poppler.metadata \
 	poppler-sharp/Document.cs
+
 GENSOURCES = poppler-sharp/generated/*
+
 CLEANFILES = \
 	$(GENSOURCES) \
 	poppler-sharp/poppler-api.xml \
 	poppler-sharp.dll
+
 pkglib_DATA = poppler-sharp.dll
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = sources/poppler-sharp.pc
 
 if ENABLE_AUTOGEN_API
 poppler-sharp/poppler-api.raw: sources/poppler-sharp.sources

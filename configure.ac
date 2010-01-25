@@ -15,12 +15,15 @@ AC_ARG_WITH([poppler-glib-dir],
 AC_SUBST([POPPLER_GLIB_DIR])
 AM_CONDITIONAL(ENABLE_AUTOGEN_API, test "$enable_autogen_api" = "yes")
 
+dnl check for MCS
 AC_PATH_PROG([MCS], [gmcs], [no])
 if [[ ${MCS} = "no" ]]; then
     AC_MSG_ERROR([You need to install gmcs])
 fi
+
 AC_CONFIG_FILES([
     Makefile
     sources/poppler-sharp.sources
+    sources/poppler-sharp.pc
 ])
 AC_OUTPUT
