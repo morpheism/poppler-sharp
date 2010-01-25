@@ -17,7 +17,8 @@
 
 EXTRA_DIST = \
 	poppler-sharp/poppler-api.raw \
-	poppler-sharp/poppler.metadata
+	poppler-sharp/poppler.metadata \
+	poppler-sharp/Document.cs
 SOURCES = poppler-sharp/generated/*
 CLEANFILES = \
 	$(SOURCES) \
@@ -30,20 +31,21 @@ endif
 
 poppler-sharp/poppler-api.xml: poppler-sharp/poppler-api.raw \
                                poppler-sharp/poppler.metadata
+	[ -d $(dir $@) ] || mkdir -p $(dir $@)
 	cp $< $@
 	gapi2-fixup \
-		--api=poppler-sharp/poppler-api.xml \
-		--metadata=poppler-sharp/poppler.metadata
+		--api=$@ \
+		--metadata=$(lastword $^)
 
 $(SOURCES): poppler-sharp/poppler-api.xml
 	gapi2-codegen \
 		--outdir=poppler-sharp/generated $(GTKSHARP_CFLAGS) \
-		--generate poppler-sharp/poppler-api.xml
+		--generate $<
 	sed -i -re \
 		's/(\s*)public\s+class\s+Document/\1public partial class Document/' \
 		poppler-sharp/generated/Document.cs
 
-poppler-sharp.dll: $(SOURCES)
+poppler-sharp.dll: poppler-sharp/Document.cs $(SOURCES)
 	$(MCS) \
 		-pkg:gtk-sharp-2.0 \
 		-r:Mono.Cairo \
@@ -51,6 +53,6 @@ poppler-sharp.dll: $(SOURCES)
 		-out:$@ \
 		-unsafe \
 		$(SOURCES) \
-		poppler-sharp/Document.cs
+		$<
 
 pkglib_DATA = poppler-sharp.dll
