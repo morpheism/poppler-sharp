@@ -19,8 +19,10 @@ CLEANFILES = \
 	$(SOURCES) \
 	poppler-sharp/poppler-api.xml
 
+if ENABLE_AUTOGEN_API
 poppler-sharp/poppler-api.raw: sources/poppler-sharp.sources
 	gapi2-parser $<
+endif
 
 poppler-sharp/poppler-api.xml: poppler-sharp/poppler-api.raw \
                                poppler-sharp/poppler.metadata
@@ -42,8 +44,9 @@ poppler-sharp.dll: $(SOURCES)
 		-pkg:gtk-sharp-2.0 \
 		-r:Mono.Cairo \
 		-t:library \
-		-out:poppler-sharp/poppler-sharp.dll \
-		-unsafe $(SOURCES) \
+		-out:$@ \
+		-unsafe \
+		$(SOURCES) \
 		poppler-sharp/Document.cs
 
 pkglib_DATA = poppler-sharp.dll
