@@ -10,8 +10,8 @@ Building
 1. Install Poppler and any dependencies. You probably want to make sure that
    Poppler will be built with support for Cairo output.
 2. Run ./configure, or if it does not exist, ./autogen.sh to create the Makefile
-3. (Optional) When doing step 2, pass the argument --with-poppler-glib-dir=<DIR>
-   where <DIR> is the path to your copy of the poppler/glib source directory.
+3. (Optional) When doing step 2, pass the argument --with-poppler-glib-dir=DIR
+   where DIR is the path to your copy of the poppler/glib source directory.
 4. Run `make` in the terminal.
 5. You should find the library at `poppler-sharp.dll`.
 
