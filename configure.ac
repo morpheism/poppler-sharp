@@ -6,6 +6,7 @@ AC_INIT([poppler-sharp], [0.0.1], [jacinto.m.shy@gmail.com])
 AM_INIT_AUTOMAKE([-Wall foreign dist-bzip2 tar-ustar])
 
 PKG_CHECK_MODULES([GTKSHARP], [gtk-sharp-2.0])
+PKG_CHECK_MODULES([GAPI], [gapi-2.0])
 AC_ARG_WITH([poppler-glib-dir],
             [AC_HELP_STRING([--with-poppler-glib-dir=DIR],
                             [glib folder in poppler source directory])],
