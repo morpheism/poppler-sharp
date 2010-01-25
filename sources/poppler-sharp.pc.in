@@ -6,4 +6,4 @@ Libraries=${libdir}/@PACKAGE@/poppler-sharp.dll
 
 Name: poppler-sharp
 Description: poppler-sharp - managed CLI bindings for libpoppler
-Version: 0.0.1
+Version: @VERSION@
