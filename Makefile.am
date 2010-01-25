@@ -1,5 +1,7 @@
 # -*- makefile-automake -*-
 
+ACLOCAL_AMFLAGS = -Im4
+
 EXTRA_DIST = \
 	poppler-sharp/poppler-api.raw \
 	poppler-sharp/poppler.metadata \

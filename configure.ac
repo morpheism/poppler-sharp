@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.64])
-AC_INIT([poppler-sharp], [0.0.1], [hyperar@ubuntu.com])
+AC_INIT([poppler-sharp], [0.0.1], [jacinto.m.shy@gmail.com])
 AM_INIT_AUTOMAKE([-Wall foreign dist-bzip2 tar-ustar])
 
 PKG_CHECK_MODULES([GTKSHARP], [gtk-sharp-2.0])
@@ -15,11 +15,8 @@ AC_ARG_WITH([poppler-glib-dir],
 AC_SUBST([POPPLER_GLIB_DIR])
 AM_CONDITIONAL(ENABLE_AUTOGEN_API, test "$enable_autogen_api" = "yes")
 
-dnl check for MCS
-AC_PATH_PROG([MCS], [gmcs], [no])
-if [[ ${MCS} = "no" ]]; then
-    AC_MSG_ERROR([You need to install gmcs])
-fi
+SHAMROCK_FIND_MONO_2_0_COMPILER
+SHAMROCK_CHECK_MONO_2_0_GAC_ASSEMBLIES(Mono.Cairo)
 
 AC_CONFIG_FILES([
     Makefile
