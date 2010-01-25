@@ -4,7 +4,7 @@
     <library name="poppler-glib">
       <namespace name="Poppler">
         <!-- This should be generated -->
-        <dir>/home/jacinto/repo/poppler/glib</dir>
+        <dir>@POPPLER_GLIB_DIR@</dir>
       </namespace>
     </library>
   </api>
