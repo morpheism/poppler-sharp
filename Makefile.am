@@ -14,6 +14,10 @@
 # clean:
 # 	rm -rf poppler-sharp/generated
 # 	rm -f poppler-sharp/poppler-api.xml
+
+EXTRA_DIST = \
+	poppler-sharp/poppler-api.raw \
+	poppler-sharp/poppler.metadata
 SOURCES = poppler-sharp/generated/*
 CLEANFILES = \
 	$(SOURCES) \
