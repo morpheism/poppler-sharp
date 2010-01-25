@@ -1,3 +1,12 @@
-
+Makefile
+Makefile.in
+aclocal.m4
+autom4te.cache/
+config.*
+configure
+install-sh
+missing
+sources/poppler-sharp.pc
+sources/poppler-sharp.sources
 *~
 generated/
