@@ -1,4 +1,6 @@
 #!/bin/sh
 
-autoreconf -vfi
+aclocal -I /usr/share/aclocal -I m4
+automake -ac
+autoconf
 ./configure "$@"
