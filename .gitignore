@@ -7,6 +7,8 @@ configure
 install-sh
 missing
 sources/poppler-sharp.pc
+poppler-sharp/poppler-api.xml
 sources/poppler-sharp.sources
 *~
 generated/
+*.dll
