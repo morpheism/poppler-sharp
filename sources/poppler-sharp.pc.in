@@ -3,6 +3,7 @@ exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 Libraries=${libdir}/@PACKAGE@/poppler-sharp.dll
+Files=${Libraries} ${libdir}/@PACKAGE@/poppler-sharp.dll.config
 
 Name: poppler-sharp
 Description: poppler-sharp - managed CLI bindings for libpoppler

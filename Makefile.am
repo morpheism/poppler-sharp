@@ -14,7 +14,7 @@ CLEANFILES = \
 	poppler-sharp/poppler-api.xml \
 	poppler-sharp.dll
 
-pkglib_DATA = poppler-sharp.dll
+pkglib_DATA = poppler-sharp.dll sources/poppler-sharp.dll.config
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = sources/poppler-sharp.pc
 
