@@ -10,7 +10,9 @@ EXTRA_DIST = \
 CUSTOMSOURCES = \
 	poppler-sharp/custom/Document.custom
 
-GENSOURCES = poppler-sharp/generated/*
+GENDIR = poppler-sharp/generated/
+GENSOURCES = $(GENDIR)*
+GENSTAMP = $(GENDIR)stamp
 
 CLEANFILES = \
 	$(GENSOURCES) \
@@ -35,12 +37,14 @@ poppler-sharp/poppler-api.xml: poppler-sharp/poppler-api.raw \
 		--api=$@ \
 		--metadata=$(lastword $^)
 
-$(GENSOURCES): poppler-sharp/poppler-api.xml $(CUSTOMSOURCES)
+$(GENSOURCES): $(GENSTAMP)
+$(GENSTAMP): poppler-sharp/poppler-api.xml $(CUSTOMSOURCES)
 	gapi2-codegen \
 		--outdir=poppler-sharp/generated \
 		--customdir=poppler-sharp/custom \
 		$(GTKSHARP_CFLAGS) \
 		--generate $<
+	touch $@
 
 poppler-sharp.dll: $(GENSOURCES)
 	$(MCS) \
