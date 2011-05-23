@@ -5,7 +5,10 @@ ACLOCAL_AMFLAGS = -Im4
 EXTRA_DIST = \
 	poppler-sharp/poppler-api.raw \
 	poppler-sharp/poppler.metadata \
-	poppler-sharp/Document.cs
+	$(CUSTOMSOURCES)
+
+CUSTOMSOURCES = \
+	poppler-sharp/custom/Document.custom
 
 GENSOURCES = poppler-sharp/generated/*
 
@@ -32,20 +35,18 @@ poppler-sharp/poppler-api.xml: poppler-sharp/poppler-api.raw \
 		--api=$@ \
 		--metadata=$(lastword $^)
 
-$(GENSOURCES): poppler-sharp/poppler-api.xml
+$(GENSOURCES): poppler-sharp/poppler-api.xml $(CUSTOMSOURCES)
 	gapi2-codegen \
-		--outdir=poppler-sharp/generated $(GTKSHARP_CFLAGS) \
+		--outdir=poppler-sharp/generated \
+		--customdir=poppler-sharp/custom \
+		$(GTKSHARP_CFLAGS) \
 		--generate $<
-	sed -i -re \
-		's/(\s*)public\s+class\s+Document/\1public partial class Document/' \
-		poppler-sharp/generated/Document.cs
 
-poppler-sharp.dll: poppler-sharp/Document.cs $(GENSOURCES)
+poppler-sharp.dll: $(GENSOURCES)
 	$(MCS) \
 		-pkg:gtk-sharp-2.0 \
 		-r:Mono.Cairo \
 		-t:library \
 		-out:$@ \
 		-unsafe \
-		$(GENSOURCES) \
-		$<
+		$^
