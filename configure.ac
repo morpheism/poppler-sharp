@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.64])
-AC_INIT([poppler-sharp], [0.0.1], [jacinto.m.shy@gmail.com])
+AC_INIT([poppler-sharp], [0.0.2], [jacinto.m.shy@gmail.com])
 AM_INIT_AUTOMAKE([-Wall foreign dist-bzip2 tar-ustar])
 
 PKG_CHECK_MODULES([GTKSHARP], [gtk-sharp-2.0])
