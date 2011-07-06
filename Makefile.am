@@ -2,13 +2,14 @@
 
 ACLOCAL_AMFLAGS = -Im4
 
+CUSTOMSOURCES = \
+	poppler-sharp/custom/Document.custom
+
 EXTRA_DIST = \
 	poppler-sharp/poppler-api.raw \
 	poppler-sharp/poppler.metadata \
+	sources/poppler-sharp.dll.config \
 	$(CUSTOMSOURCES)
-
-CUSTOMSOURCES = \
-	poppler-sharp/custom/Document.custom
 
 GENDIR = poppler-sharp/generated/
 GENSOURCES = $(GENDIR)*
@@ -41,7 +42,7 @@ $(GENSOURCES): $(GENSTAMP)
 $(GENSTAMP): poppler-sharp/poppler-api.xml $(CUSTOMSOURCES)
 	gapi2-codegen \
 		--outdir=poppler-sharp/generated \
-		--customdir=poppler-sharp/custom \
+		--customdir=$(srcdir)/poppler-sharp/custom \
 		$(GTKSHARP_CFLAGS) \
 		--generate $<
 	touch $@
