@@ -12,7 +12,7 @@ EXTRA_DIST = \
 	$(CUSTOMSOURCES)
 
 GENDIR = poppler-sharp/generated/
-GENSOURCES = $(GENDIR)*
+GENSOURCES = $(GENDIR)*.cs
 GENSTAMP = $(GENDIR)stamp
 
 CLEANFILES = \
