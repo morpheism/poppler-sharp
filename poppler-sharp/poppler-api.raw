@@ -29,6 +29,7 @@
       <member cname="POPPLER_ACTION_MOVIE" name="Movie" />
       <member cname="POPPLER_ACTION_RENDITION" name="Rendition" />
       <member cname="POPPLER_ACTION_OCG_STATE" name="OcgState" />
+      <member cname="POPPLER_ACTION_JAVASCRIPT" name="Javascript" />
     </enum>
     <enum name="AnnotExternalDataType" cname="PopplerAnnotExternalDataType" type="enum">
       <member cname="POPPLER_ANNOT_EXTERNAL_DATA_MARKUP_3D" name="ThreeD" />
@@ -205,6 +206,9 @@
       <member cname="POPPLER_PERMISSIONS_OK_TO_COPY" name="Copy" value="1 &lt;&lt; 2" />
       <member cname="POPPLER_PERMISSIONS_OK_TO_ADD_NOTES" name="AddNotes" value="1 &lt;&lt; 3" />
       <member cname="POPPLER_PERMISSIONS_OK_TO_FILL_FORM" name="FillForm" value="1 &lt;&lt; 4" />
+      <member cname="POPPLER_PERMISSIONS_OK_TO_EXTRACT_CONTENTS" name="ExtractContents" value="1 &lt;&lt; 5" />
+      <member cname="POPPLER_PERMISSIONS_OK_TO_ASSEMBLE" name="Assemble" value="1 &lt;&lt; 6" />
+      <member cname="POPPLER_PERMISSIONS_OK_TO_PRINT_HIGH_RESOLUTION" name="PrintHighResolution" value="1 &lt;&lt; 7" />
       <member cname="POPPLER_PERMISSIONS_OK_TO_PRINT" name="Print" />
     </enum>
     <enum name="PrintFlags" cname="PopplerPrintFlags" type="flags">
@@ -425,6 +429,9 @@
       <method name="GetModificationDate" cname="poppler_document_get_modification_date">
         <return-type type="time_t" />
       </method>
+      <method name="GetNAttachments" cname="poppler_document_get_n_attachments">
+        <return-type type="guint" />
+      </method>
       <method name="GetNPages" cname="poppler_document_get_n_pages">
         <return-type type="int" />
       </method>
@@ -594,6 +601,9 @@
       <method name="ChoiceUnselectAll" cname="poppler_form_field_choice_unselect_all">
         <return-type type="void" />
       </method>
+      <method name="GetAction" cname="poppler_form_field_get_action">
+        <return-type type="PopplerAction*" />
+      </method>
       <method name="GetFieldType" cname="poppler_form_field_get_field_type">
         <return-type type="PopplerFormFieldType" />
       </method>
@@ -749,6 +759,12 @@
           <parameter type="GList*" name="list" />
         </parameters>
       </method>
+      <method name="FreeTextAttributes" cname="poppler_page_free_text_attributes" shared="true">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GList*" name="list" />
+        </parameters>
+      </method>
       <method name="GetAnnotMapping" cname="poppler_page_get_annot_mapping">
         <return-type type="GList*" />
       </method>
@@ -815,6 +831,9 @@
       <method name="GetText" cname="poppler_page_get_text">
         <return-type type="char*" />
       </method>
+      <method name="GetTextAttributes" cname="poppler_page_get_text_attributes">
+        <return-type type="GList*" />
+      </method>
       <method name="GetTextLayout" cname="poppler_page_get_text_layout">
         <return-type type="gboolean" />
         <parameters>
@@ -824,9 +843,6 @@
       </method>
       <method name="GetThumbnail" cname="poppler_page_get_thumbnail">
         <return-type type="cairo_surface_t*" />
-      </method>
-      <method name="GetThumbnailPixbuf" cname="poppler_page_get_thumbnail_pixbuf">
-        <return-type type="GdkPixbuf*" />
       </method>
       <method name="GetThumbnailSize" cname="poppler_page_get_thumbnail_size">
         <return-type type="gboolean" />
@@ -869,43 +885,6 @@
           <parameter type="PopplerSelectionStyle" name="style" />
           <parameter type="PopplerColor*" name="glyph_color" />
           <parameter type="PopplerColor*" name="background_color" />
-        </parameters>
-      </method>
-      <method name="RenderSelectionToPixbuf" cname="poppler_page_render_selection_to_pixbuf">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="gdouble" name="scale" />
-          <parameter type="int" name="rotation" />
-          <parameter type="GdkPixbuf*" name="pixbuf" />
-          <parameter type="PopplerRectangle*" name="selection" />
-          <parameter type="PopplerRectangle*" name="old_selection" />
-          <parameter type="PopplerSelectionStyle" name="style" />
-          <parameter type="GdkColor*" name="glyph_color" />
-          <parameter type="GdkColor*" name="background_color" />
-        </parameters>
-      </method>
-      <method name="RenderToPixbuf" cname="poppler_page_render_to_pixbuf">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="int" name="src_x" />
-          <parameter type="int" name="src_y" />
-          <parameter type="int" name="src_width" />
-          <parameter type="int" name="src_height" />
-          <parameter type="double" name="scale" />
-          <parameter type="int" name="rotation" />
-          <parameter type="GdkPixbuf*" name="pixbuf" />
-        </parameters>
-      </method>
-      <method name="RenderToPixbufForPrinting" cname="poppler_page_render_to_pixbuf_for_printing">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="int" name="src_x" />
-          <parameter type="int" name="src_y" />
-          <parameter type="int" name="src_width" />
-          <parameter type="int" name="src_height" />
-          <parameter type="double" name="scale" />
-          <parameter type="int" name="rotation" />
-          <parameter type="GdkPixbuf*" name="pixbuf" />
         </parameters>
       </method>
       <method name="RenderToPs" cname="poppler_page_render_to_ps">
@@ -964,6 +943,11 @@
       <field name="Title" cname="title" type="gchar*" />
       <field name="FileName" cname="file_name" type="gchar*" />
       <field name="Dest" cname="dest" type="PopplerDest*" />
+    </struct>
+    <struct name="ActionJavascript" cname="PopplerActionJavascript">
+      <field name="Type" cname="type" type="PopplerActionType" />
+      <field name="Title" cname="title" type="gchar*" />
+      <field name="Script" cname="script" type="gchar*" />
     </struct>
     <struct name="ActionLaunch" cname="PopplerActionLaunch">
       <field name="Type" cname="type" type="PopplerActionType" />
@@ -1306,6 +1290,24 @@
         <return-type type="GType" />
       </method>
       <constructor cname="poppler_rectangle_new" />
+    </struct>
+    <struct name="TextAttributes" cname="PopplerTextAttributes" opaque="true">
+      <field name="FontName" cname="font_name" type="gchar*" access="public" writeable="true" />
+      <field name="FontSize" cname="font_size" type="gdouble" access="public" writeable="true" />
+      <field name="IsUnderlined" cname="is_underlined" type="gboolean" access="public" writeable="true" />
+      <field name="Color" cname="color" type="PopplerColor" access="public" writeable="true" />
+      <field name="StartIndex" cname="start_index" type="gint" access="public" writeable="true" />
+      <field name="EndIndex" cname="end_index" type="gint" access="public" writeable="true" />
+      <method name="Copy" cname="poppler_text_attributes_copy">
+        <return-type type="PopplerTextAttributes*" owned="true" />
+      </method>
+      <method name="Free" cname="poppler_text_attributes_free">
+        <return-type type="void" />
+      </method>
+      <method name="GetType" cname="poppler_text_attributes_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="poppler_text_attributes_new" />
     </struct>
     <class name="Global" cname="PopplerGlobal">
       <method name="DateParse" cname="poppler_date_parse" shared="true">
