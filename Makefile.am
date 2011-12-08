@@ -17,6 +17,7 @@ GENSTAMP = $(GENDIR)stamp
 
 CLEANFILES = \
 	$(GENSOURCES) \
+	$(GENSTAMP) \
 	poppler-sharp/poppler-api.xml \
 	poppler-sharp.dll
 
