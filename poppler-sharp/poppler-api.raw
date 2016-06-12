@@ -308,6 +308,13 @@
       <member cname="POPPLER_STRUCTURE_GET_TEXT_NONE" name="None" />
       <member cname="POPPLER_STRUCTURE_GET_TEXT_RECURSIVE" name="Recursive" value="1 &lt;&lt; 0" />
     </enum>
+    <enum name="StructureGlyphOrientation" cname="PopplerStructureGlyphOrientation" type="enum">
+      <member cname="POPPLER_STRUCTURE_GLYPH_ORIENTATION_AUTO" name="Auto" />
+      <member cname="POPPLER_STRUCTURE_GLYPH_ORIENTATION_0" name="0_" value="Auto" />
+      <member cname="POPPLER_STRUCTURE_GLYPH_ORIENTATION_90" name="90" />
+      <member cname="POPPLER_STRUCTURE_GLYPH_ORIENTATION_180" name="180" />
+      <member cname="POPPLER_STRUCTURE_GLYPH_ORIENTATION_270" name="Two70" />
+    </enum>
     <enum name="StructureInlineAlign" cname="PopplerStructureInlineAlign" type="enum">
       <member cname="POPPLER_STRUCTURE_INLINE_ALIGN_START" name="Start" />
       <member cname="POPPLER_STRUCTURE_INLINE_ALIGN_CENTER" name="Center" />

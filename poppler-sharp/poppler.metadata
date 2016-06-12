@@ -12,7 +12,6 @@
   <attr path="/api/namespace/object[@name='AnnotCircle']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='AnnotFreeText']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='AnnotLine']" name="parent">GObject</attr>
-  <attr path="/api/namespace/object[@name='AnnotMarkup']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='AnnotMovie']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='AnnotScreen']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='AnnotSquare']" name="parent">GObject</attr>
@@ -32,8 +31,11 @@
   <attr path="/api/namespace/struct[@name='Dest']" name="opaque">false</attr>
   <attr path="/api/namespace/struct[@name='FormFieldMapping']" name="opaque">false</attr>
   <attr path="/api/namespace/struct[@name='ImageMapping']" name="opaque">false</attr>
-  <attr path="/api/namespace/struct[@name='LayersIter']" name="opaque">false</attr>
   <attr path="/api/namespace/struct[@name='LinkMapping']" name="opaque">false</attr>
   <attr path="/api/namespace/struct[@name='PageTransition']" name="opaque">false</attr>
   <attr path="/api/namespace/struct[@name='Rectangle']" name="opaque">false</attr>
+  <attr path="/api/namespace/enum[@name='StructureGlyphOrientation']/member[@cname='POPPLER_STRUCTURE_GLYPH_ORIENTATION_0']" name="name">_0</attr>
+  <attr path="/api/namespace/enum[@name='StructureGlyphOrientation']/member[@cname='POPPLER_STRUCTURE_GLYPH_ORIENTATION_90']" name="name">_90</attr>
+  <attr path="/api/namespace/enum[@name='StructureGlyphOrientation']/member[@cname='POPPLER_STRUCTURE_GLYPH_ORIENTATION_180']" name="name">_180</attr>
+  <attr path="/api/namespace/enum[@name='StructureGlyphOrientation']/member[@cname='POPPLER_STRUCTURE_GLYPH_ORIENTATION_270']" name="name">_270</attr>
 </metadata>
