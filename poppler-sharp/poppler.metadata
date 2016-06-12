@@ -9,18 +9,30 @@
   <attr path="/api/namespace/enum[@name='Permissions']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@name='Action']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='Annot']" name="parent">GObject</attr>
+  <attr path="/api/namespace/object[@name='AnnotCircle']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='AnnotFreeText']" name="parent">GObject</attr>
+  <attr path="/api/namespace/object[@name='AnnotLine']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='AnnotMarkup']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='AnnotMovie']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='AnnotScreen']" name="parent">GObject</attr>
+  <attr path="/api/namespace/object[@name='AnnotSquare']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='AnnotText']" name="parent">GObject</attr>
+  <attr path="/api/namespace/object[@name='AnnotTextMarkup']" name="parent">GObject</attr>
+  <attr path="/api/namespace/object[@name='Document']" name="parent">GObject</attr>
+  <attr path="/api/namespace/object[@name='FontInfo']" name="parent">GObject</attr>
+  <attr path="/api/namespace/object[@name='FormField']" name="parent">GObject</attr>
+  <attr path="/api/namespace/object[@name='Layer']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='Media']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@name='Movie']" name="parent">GObject</attr>
+  <attr path="/api/namespace/object[@name='Page']" name="parent">GObject</attr>
+  <attr path="/api/namespace/object[@name='PSFile']" name="parent">GObject</attr>
+  <attr path="/api/namespace/object[@name='StructureElement']" name="parent">GObject</attr>
   <attr path="/api/namespace/struct[@name='AnnotCalloutLine']" name="opaque">false</attr>
   <attr path="/api/namespace/struct[@name='Color']" name="opaque">false</attr>
   <attr path="/api/namespace/struct[@name='Dest']" name="opaque">false</attr>
   <attr path="/api/namespace/struct[@name='FormFieldMapping']" name="opaque">false</attr>
   <attr path="/api/namespace/struct[@name='ImageMapping']" name="opaque">false</attr>
+  <attr path="/api/namespace/struct[@name='LayersIter']" name="opaque">false</attr>
   <attr path="/api/namespace/struct[@name='LinkMapping']" name="opaque">false</attr>
   <attr path="/api/namespace/struct[@name='PageTransition']" name="opaque">false</attr>
   <attr path="/api/namespace/struct[@name='Rectangle']" name="opaque">false</attr>
