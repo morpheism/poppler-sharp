@@ -119,6 +119,12 @@
       <member cname="POPPLER_ERROR_BAD_CATALOG" name="BadCatalog" />
       <member cname="POPPLER_ERROR_DAMAGED" name="Damaged" />
     </enum>
+    <enum name="FindFlags" cname="PopplerFindFlags" type="flags">
+      <member cname="POPPLER_FIND_DEFAULT" name="Default" />
+      <member cname="POPPLER_FIND_CASE_SENSITIVE" name="CaseSensitive" value="1 &lt;&lt; 0" />
+      <member cname="POPPLER_FIND_BACKWARDS" name="Backwards" value="1 &lt;&lt; 1" />
+      <member cname="POPPLER_FIND_WHOLE_WORDS_ONLY" name="WholeWordsOnly" value="1 &lt;&lt; 2" />
+    </enum>
     <enum name="FontType" cname="PopplerFontType" type="enum">
       <member cname="POPPLER_FONT_TYPE_UNKNOWN" name="Unknown" />
       <member cname="POPPLER_FONT_TYPE_TYPE1" name="Type1" />
@@ -153,12 +159,6 @@
       <member cname="POPPLER_FORM_TEXT_NORMAL" name="Normal" />
       <member cname="POPPLER_FORM_TEXT_MULTILINE" name="Multiline" />
       <member cname="POPPLER_FORM_TEXT_FILE_SELECT" name="FileSelect" />
-    </enum>
-    <enum name="Orientation" cname="PopplerOrientation" type="enum">
-      <member cname="POPPLER_ORIENTATION_PORTRAIT" name="Portrait" />
-      <member cname="POPPLER_ORIENTATION_LANDSCAPE" name="Landscape" />
-      <member cname="POPPLER_ORIENTATION_UPSIDEDOWN" name="Upsidedown" />
-      <member cname="POPPLER_ORIENTATION_SEASCAPE" name="Seascape" />
     </enum>
     <enum name="PageLayout" cname="PopplerPageLayout" type="enum">
       <member cname="POPPLER_PAGE_LAYOUT_UNSET" name="Unset" />
@@ -222,6 +222,157 @@
       <member cname="POPPLER_SELECTION_WORD" name="Word" />
       <member cname="POPPLER_SELECTION_LINE" name="Line" />
     </enum>
+    <enum name="StructureBlockAlign" cname="PopplerStructureBlockAlign" type="enum">
+      <member cname="POPPLER_STRUCTURE_BLOCK_ALIGN_BEFORE" name="Before" />
+      <member cname="POPPLER_STRUCTURE_BLOCK_ALIGN_MIDDLE" name="Middle" />
+      <member cname="POPPLER_STRUCTURE_BLOCK_ALIGN_AFTER" name="After" />
+      <member cname="POPPLER_STRUCTURE_BLOCK_ALIGN_JUSTIFY" name="Justify" />
+    </enum>
+    <enum name="StructureBorderStyle" cname="PopplerStructureBorderStyle" type="enum">
+      <member cname="POPPLER_STRUCTURE_BORDER_STYLE_NONE" name="None" />
+      <member cname="POPPLER_STRUCTURE_BORDER_STYLE_HIDDEN" name="Hidden" />
+      <member cname="POPPLER_STRUCTURE_BORDER_STYLE_DOTTED" name="Dotted" />
+      <member cname="POPPLER_STRUCTURE_BORDER_STYLE_DASHED" name="Dashed" />
+      <member cname="POPPLER_STRUCTURE_BORDER_STYLE_SOLID" name="Solid" />
+      <member cname="POPPLER_STRUCTURE_BORDER_STYLE_DOUBLE" name="Double" />
+      <member cname="POPPLER_STRUCTURE_BORDER_STYLE_GROOVE" name="Groove" />
+      <member cname="POPPLER_STRUCTURE_BORDER_STYLE_INSET" name="Inset" />
+      <member cname="POPPLER_STRUCTURE_BORDER_STYLE_OUTSET" name="Outset" />
+    </enum>
+    <enum name="StructureElementKind" cname="PopplerStructureElementKind" type="enum">
+      <member cname="POPPLER_STRUCTURE_ELEMENT_CONTENT" name="Content" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_OBJECT_REFERENCE" name="ObjectReference" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_DOCUMENT" name="Document" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_PART" name="Part" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_ARTICLE" name="Article" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_SECTION" name="Section" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_DIV" name="Div" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_SPAN" name="Span" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_QUOTE" name="Quote" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_NOTE" name="Note" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_REFERENCE" name="Reference" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_BIBENTRY" name="Bibentry" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_CODE" name="Code" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_LINK" name="Link" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_ANNOT" name="Annot" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_BLOCKQUOTE" name="Blockquote" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_CAPTION" name="Caption" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_NONSTRUCT" name="Nonstruct" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_TOC" name="Toc" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_TOC_ITEM" name="TocItem" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_INDEX" name="Index" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_PRIVATE" name="Private" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_PARAGRAPH" name="Paragraph" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_HEADING" name="Heading" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_HEADING_1" name="Heading1" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_HEADING_2" name="Heading2" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_HEADING_3" name="Heading3" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_HEADING_4" name="Heading4" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_HEADING_5" name="Heading5" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_HEADING_6" name="Heading6" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_LIST" name="List" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_LIST_ITEM" name="ListItem" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_LIST_LABEL" name="ListLabel" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_LIST_BODY" name="ListBody" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_TABLE" name="Table" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_TABLE_ROW" name="TableRow" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_TABLE_HEADING" name="TableHeading" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_TABLE_DATA" name="TableData" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_TABLE_HEADER" name="TableHeader" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_TABLE_FOOTER" name="TableFooter" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_TABLE_BODY" name="TableBody" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_RUBY" name="Ruby" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_RUBY_BASE_TEXT" name="RubyBaseText" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_RUBY_ANNOT_TEXT" name="RubyAnnotText" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_RUBY_PUNCTUATION" name="RubyPunctuation" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_WARICHU" name="Warichu" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_WARICHU_TEXT" name="WarichuText" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_WARICHU_PUNCTUATION" name="WarichuPunctuation" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_FIGURE" name="Figure" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_FORMULA" name="Formula" />
+      <member cname="POPPLER_STRUCTURE_ELEMENT_FORM" name="Form" />
+    </enum>
+    <enum name="StructureFormRole" cname="PopplerStructureFormRole" type="enum">
+      <member cname="POPPLER_STRUCTURE_FORM_ROLE_UNDEFINED" name="Undefined" />
+      <member cname="POPPLER_STRUCTURE_FORM_ROLE_RADIO_BUTTON" name="RadioButton" />
+      <member cname="POPPLER_STRUCTURE_FORM_ROLE_PUSH_BUTTON" name="PushButton" />
+      <member cname="POPPLER_STRUCTURE_FORM_ROLE_TEXT_VALUE" name="TextValue" />
+      <member cname="POPPLER_STRUCTURE_FORM_ROLE_CHECKBOX" name="Checkbox" />
+    </enum>
+    <enum name="StructureFormState" cname="PopplerStructureFormState" type="enum">
+      <member cname="POPPLER_STRUCTURE_FORM_STATE_ON" name="On" />
+      <member cname="POPPLER_STRUCTURE_FORM_STATE_OFF" name="Off" />
+      <member cname="POPPLER_STRUCTURE_FORM_STATE_NEUTRAL" name="Neutral" />
+    </enum>
+    <enum name="StructureGetTextFlags" cname="PopplerStructureGetTextFlags" type="flags">
+      <member cname="POPPLER_STRUCTURE_GET_TEXT_NONE" name="None" />
+      <member cname="POPPLER_STRUCTURE_GET_TEXT_RECURSIVE" name="Recursive" value="1 &lt;&lt; 0" />
+    </enum>
+    <enum name="StructureGlyphOrientation" cname="PopplerStructureGlyphOrientation" type="enum">
+      <member cname="POPPLER_STRUCTURE_GLYPH_ORIENTATION_AUTO" name="Auto" />
+      <member cname="POPPLER_STRUCTURE_GLYPH_ORIENTATION_0" name="0_" value="Auto" />
+      <member cname="POPPLER_STRUCTURE_GLYPH_ORIENTATION_90" name="90" />
+      <member cname="POPPLER_STRUCTURE_GLYPH_ORIENTATION_180" name="180" />
+      <member cname="POPPLER_STRUCTURE_GLYPH_ORIENTATION_270" name="Two70" />
+    </enum>
+    <enum name="StructureInlineAlign" cname="PopplerStructureInlineAlign" type="enum">
+      <member cname="POPPLER_STRUCTURE_INLINE_ALIGN_START" name="Start" />
+      <member cname="POPPLER_STRUCTURE_INLINE_ALIGN_CENTER" name="Center" />
+      <member cname="POPPLER_STRUCTURE_INLINE_ALIGN_END" name="End" />
+    </enum>
+    <enum name="StructureListNumbering" cname="PopplerStructureListNumbering" type="enum">
+      <member cname="POPPLER_STRUCTURE_LIST_NUMBERING_NONE" name="None" />
+      <member cname="POPPLER_STRUCTURE_LIST_NUMBERING_DISC" name="Disc" />
+      <member cname="POPPLER_STRUCTURE_LIST_NUMBERING_CIRCLE" name="Circle" />
+      <member cname="POPPLER_STRUCTURE_LIST_NUMBERING_SQUARE" name="Square" />
+      <member cname="POPPLER_STRUCTURE_LIST_NUMBERING_DECIMAL" name="Decimal" />
+      <member cname="POPPLER_STRUCTURE_LIST_NUMBERING_UPPER_ROMAN" name="UpperRoman" />
+      <member cname="POPPLER_STRUCTURE_LIST_NUMBERING_LOWER_ROMAN" name="LowerRoman" />
+      <member cname="POPPLER_STRUCTURE_LIST_NUMBERING_UPPER_ALPHA" name="UpperAlpha" />
+      <member cname="POPPLER_STRUCTURE_LIST_NUMBERING_LOWER_ALPHA" name="LowerAlpha" />
+    </enum>
+    <enum name="StructurePlacement" cname="PopplerStructurePlacement" type="enum">
+      <member cname="POPPLER_STRUCTURE_PLACEMENT_BLOCK" name="Block" />
+      <member cname="POPPLER_STRUCTURE_PLACEMENT_INLINE" name="Inline" />
+      <member cname="POPPLER_STRUCTURE_PLACEMENT_BEFORE" name="Before" />
+      <member cname="POPPLER_STRUCTURE_PLACEMENT_START" name="Start" />
+      <member cname="POPPLER_STRUCTURE_PLACEMENT_END" name="End" />
+    </enum>
+    <enum name="StructureRubyAlign" cname="PopplerStructureRubyAlign" type="enum">
+      <member cname="POPPLER_STRUCTURE_RUBY_ALIGN_START" name="Start" />
+      <member cname="POPPLER_STRUCTURE_RUBY_ALIGN_CENTER" name="Center" />
+      <member cname="POPPLER_STRUCTURE_RUBY_ALIGN_END" name="End" />
+      <member cname="POPPLER_STRUCTURE_RUBY_ALIGN_JUSTIFY" name="Justify" />
+      <member cname="POPPLER_STRUCTURE_RUBY_ALIGN_DISTRIBUTE" name="Distribute" />
+    </enum>
+    <enum name="StructureRubyPosition" cname="PopplerStructureRubyPosition" type="enum">
+      <member cname="POPPLER_STRUCTURE_RUBY_POSITION_BEFORE" name="Before" />
+      <member cname="POPPLER_STRUCTURE_RUBY_POSITION_AFTER" name="After" />
+      <member cname="POPPLER_STRUCTURE_RUBY_POSITION_WARICHU" name="Warichu" />
+      <member cname="POPPLER_STRUCTURE_RUBY_POSITION_INLINE" name="Inline" />
+    </enum>
+    <enum name="StructureTableScope" cname="PopplerStructureTableScope" type="enum">
+      <member cname="POPPLER_STRUCTURE_TABLE_SCOPE_ROW" name="Row" />
+      <member cname="POPPLER_STRUCTURE_TABLE_SCOPE_COLUMN" name="Column" />
+      <member cname="POPPLER_STRUCTURE_TABLE_SCOPE_BOTH" name="Both" />
+    </enum>
+    <enum name="StructureTextAlign" cname="PopplerStructureTextAlign" type="enum">
+      <member cname="POPPLER_STRUCTURE_TEXT_ALIGN_START" name="Start" />
+      <member cname="POPPLER_STRUCTURE_TEXT_ALIGN_CENTER" name="Center" />
+      <member cname="POPPLER_STRUCTURE_TEXT_ALIGN_END" name="End" />
+      <member cname="POPPLER_STRUCTURE_TEXT_ALIGN_JUSTIFY" name="Justify" />
+    </enum>
+    <enum name="StructureTextDecoration" cname="PopplerStructureTextDecoration" type="enum">
+      <member cname="POPPLER_STRUCTURE_TEXT_DECORATION_NONE" name="None" />
+      <member cname="POPPLER_STRUCTURE_TEXT_DECORATION_UNDERLINE" name="Underline" />
+      <member cname="POPPLER_STRUCTURE_TEXT_DECORATION_OVERLINE" name="Overline" />
+      <member cname="POPPLER_STRUCTURE_TEXT_DECORATION_LINETHROUGH" name="Linethrough" />
+    </enum>
+    <enum name="StructureWritingMode" cname="PopplerStructureWritingMode" type="enum">
+      <member cname="POPPLER_STRUCTURE_WRITING_MODE_LR_TB" name="LrTb" />
+      <member cname="POPPLER_STRUCTURE_WRITING_MODE_RL_TB" name="RlTb" />
+      <member cname="POPPLER_STRUCTURE_WRITING_MODE_TB_RL" name="TbRl" />
+    </enum>
     <enum name="ViewerPreferences" cname="PopplerViewerPreferences" type="flags">
       <member cname="POPPLER_VIEWER_PREFERENCES_UNSET" name="Unset" />
       <member cname="POPPLER_VIEWER_PREFERENCES_HIDE_TOOLBAR" name="HideToolbar" value="1 &lt;&lt; 0" />
@@ -261,7 +412,7 @@
         <return-type type="GType" />
       </method>
     </object>
-    <object name="Annot" cname="PopplerAnnot" parent="GObject">
+    <object name="Annot" cname="PopplerAnnot">
       <method name="GetAnnotType" cname="poppler_annot_get_annot_type">
         <return-type type="PopplerAnnotType" />
       </method>
@@ -283,6 +434,12 @@
       <method name="GetPageIndex" cname="poppler_annot_get_page_index">
         <return-type type="gint" />
       </method>
+      <method name="GetRectangle" cname="poppler_annot_get_rectangle">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="PopplerRectangle*" name="poppler_rect" />
+        </parameters>
+      </method>
       <method name="GetType" cname="poppler_annot_get_type" shared="true">
         <return-type type="GType" />
       </method>
@@ -298,6 +455,38 @@
           <parameter type="const-gchar*" name="contents" />
         </parameters>
       </method>
+      <method name="SetFlags" cname="poppler_annot_set_flags">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="PopplerAnnotFlag" name="flags" />
+        </parameters>
+      </method>
+      <method name="SetRectangle" cname="poppler_annot_set_rectangle">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="PopplerRectangle*" name="poppler_rect" />
+        </parameters>
+      </method>
+    </object>
+    <object name="AnnotCircle" cname="PopplerAnnotCircle">
+      <method name="GetInteriorColor" cname="poppler_annot_circle_get_interior_color">
+        <return-type type="PopplerColor*" />
+      </method>
+      <method name="GetType" cname="poppler_annot_circle_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="poppler_annot_circle_new">
+        <parameters>
+          <parameter type="PopplerDocument*" name="doc" />
+          <parameter type="PopplerRectangle*" name="rect" />
+        </parameters>
+      </constructor>
+      <method name="SetInteriorColor" cname="poppler_annot_circle_set_interior_color">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="PopplerColor*" name="poppler_color" />
+        </parameters>
+      </method>
     </object>
     <object name="AnnotFreeText" cname="PopplerAnnotFreeText">
       <method name="GetCalloutLine" cname="poppler_annot_free_text_get_callout_line">
@@ -308,6 +497,26 @@
       </method>
       <method name="GetType" cname="poppler_annot_free_text_get_type" shared="true">
         <return-type type="GType" />
+      </method>
+    </object>
+    <object name="AnnotLine" cname="PopplerAnnotLine">
+      <method name="GetType" cname="poppler_annot_line_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="poppler_annot_line_new">
+        <parameters>
+          <parameter type="PopplerDocument*" name="doc" />
+          <parameter type="PopplerRectangle*" name="rect" />
+          <parameter type="PopplerPoint*" name="start" />
+          <parameter type="PopplerPoint*" name="end" />
+        </parameters>
+      </constructor>
+      <method name="SetVertices" cname="poppler_annot_line_set_vertices">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="PopplerPoint*" name="start" />
+          <parameter type="PopplerPoint*" name="end" />
+        </parameters>
       </method>
     </object>
     <object name="AnnotFileAttachmentPopplerAnnotMarkup" cname="PopplerAnnotFileAttachmentPopplerAnnotMarkup" />
@@ -328,6 +537,26 @@
       </method>
       <method name="GetType" cname="poppler_annot_screen_get_type" shared="true">
         <return-type type="GType" />
+      </method>
+    </object>
+    <object name="AnnotSquare" cname="PopplerAnnotSquare">
+      <method name="GetInteriorColor" cname="poppler_annot_square_get_interior_color">
+        <return-type type="PopplerColor*" />
+      </method>
+      <method name="GetType" cname="poppler_annot_square_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="poppler_annot_square_new">
+        <parameters>
+          <parameter type="PopplerDocument*" name="doc" />
+          <parameter type="PopplerRectangle*" name="rect" />
+        </parameters>
+      </constructor>
+      <method name="SetInteriorColor" cname="poppler_annot_square_set_interior_color">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="PopplerColor*" name="poppler_color" />
+        </parameters>
       </method>
     </object>
     <object name="AnnotText" cname="PopplerAnnotText">
@@ -362,6 +591,48 @@
         </parameters>
       </method>
     </object>
+    <object name="AnnotTextMarkup" cname="PopplerAnnotTextMarkup">
+      <method name="GetQuadrilaterals" cname="poppler_annot_text_markup_get_quadrilaterals">
+        <return-type type="GArray*" />
+      </method>
+      <method name="GetType" cname="poppler_annot_text_markup_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="poppler_annot_text_markup_new_highlight">
+        <parameters>
+          <parameter type="PopplerDocument*" name="doc" />
+          <parameter type="PopplerRectangle*" name="rect" />
+          <parameter type="GArray*" name="quadrilaterals" />
+        </parameters>
+      </constructor>
+      <constructor cname="poppler_annot_text_markup_new_squiggly">
+        <parameters>
+          <parameter type="PopplerDocument*" name="doc" />
+          <parameter type="PopplerRectangle*" name="rect" />
+          <parameter type="GArray*" name="quadrilaterals" />
+        </parameters>
+      </constructor>
+      <constructor cname="poppler_annot_text_markup_new_strikeout">
+        <parameters>
+          <parameter type="PopplerDocument*" name="doc" />
+          <parameter type="PopplerRectangle*" name="rect" />
+          <parameter type="GArray*" name="quadrilaterals" />
+        </parameters>
+      </constructor>
+      <constructor cname="poppler_annot_text_markup_new_underline">
+        <parameters>
+          <parameter type="PopplerDocument*" name="doc" />
+          <parameter type="PopplerRectangle*" name="rect" />
+          <parameter type="GArray*" name="quadrilaterals" />
+        </parameters>
+      </constructor>
+      <method name="SetQuadrilaterals" cname="poppler_annot_text_markup_set_quadrilaterals">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GArray*" name="quadrilaterals" />
+        </parameters>
+      </method>
+    </object>
     <object name="Attachment" cname="PopplerAttachment" parent="GObject">
       <field name="Name" cname="name" type="gchar*" />
       <field name="Description" cname="description" type="gchar*" />
@@ -388,7 +659,7 @@
         </parameters>
       </method>
     </object>
-    <object name="Document" cname="PopplerDocument" parent="GObject">
+    <object name="Document" cname="PopplerDocument">
       <method name="FindDest" cname="poppler_document_find_dest">
         <return-type type="PopplerDest*" />
         <parameters>
@@ -499,6 +770,23 @@
           <parameter type="GError**" name="error" />
         </parameters>
       </constructor>
+      <constructor cname="poppler_document_new_from_gfile">
+        <parameters>
+          <parameter type="GFile*" name="file" />
+          <parameter type="const-char*" name="password" />
+          <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
+      <constructor cname="poppler_document_new_from_stream">
+        <parameters>
+          <parameter type="GInputStream*" name="stream" />
+          <parameter type="goffset" name="length" />
+          <parameter type="const-char*" name="password" />
+          <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
       <method name="Save" cname="poppler_document_save">
         <return-type type="gboolean" />
         <parameters>
@@ -514,7 +802,7 @@
         </parameters>
       </method>
     </object>
-    <object name="FontInfo" cname="PopplerFontInfo" parent="GObject">
+    <object name="FontInfo" cname="PopplerFontInfo">
       <method name="Free" cname="poppler_font_info_free">
         <return-type type="void" />
       </method>
@@ -534,7 +822,7 @@
         </parameters>
       </method>
     </object>
-    <object name="FormField" cname="PopplerFormField" parent="GObject">
+    <object name="FormField" cname="PopplerFormField">
       <method name="ButtonGetButtonType" cname="poppler_form_field_button_get_button_type">
         <return-type type="PopplerFormButtonType" />
       </method>
@@ -656,7 +944,7 @@
         </parameters>
       </method>
     </object>
-    <object name="Layer" cname="PopplerLayer" parent="GObject">
+    <object name="Layer" cname="PopplerLayer">
       <method name="GetRadioButtonGroupId" cname="poppler_layer_get_radio_button_group_id">
         <return-type type="gint" />
       </method>
@@ -722,7 +1010,7 @@
         <return-type type="gboolean" />
       </method>
     </object>
-    <object name="Page" cname="PopplerPage" parent="GObject">
+    <object name="Page" cname="PopplerPage">
       <method name="AddAnnot" cname="poppler_page_add_annot">
         <return-type type="void" />
         <parameters>
@@ -733,6 +1021,13 @@
         <return-type type="GList*" />
         <parameters>
           <parameter type="const-char*" name="text" />
+        </parameters>
+      </method>
+      <method name="FindTextWithOptions" cname="poppler_page_find_text_with_options">
+        <return-type type="GList*" />
+        <parameters>
+          <parameter type="const-char*" name="text" />
+          <parameter type="PopplerFindFlags" name="options" />
         </parameters>
       </method>
       <method name="FreeAnnotMapping" cname="poppler_page_free_annot_mapping" shared="true">
@@ -834,9 +1129,29 @@
       <method name="GetTextAttributes" cname="poppler_page_get_text_attributes">
         <return-type type="GList*" />
       </method>
+      <method name="GetTextAttributesForArea" cname="poppler_page_get_text_attributes_for_area">
+        <return-type type="GList*" />
+        <parameters>
+          <parameter type="PopplerRectangle*" name="area" />
+        </parameters>
+      </method>
+      <method name="GetTextForArea" cname="poppler_page_get_text_for_area">
+        <return-type type="char*" />
+        <parameters>
+          <parameter type="PopplerRectangle*" name="area" />
+        </parameters>
+      </method>
       <method name="GetTextLayout" cname="poppler_page_get_text_layout">
         <return-type type="gboolean" />
         <parameters>
+          <parameter type="PopplerRectangle**" name="rectangles" />
+          <parameter type="guint*" name="n_rectangles" />
+        </parameters>
+      </method>
+      <method name="GetTextLayoutForArea" cname="poppler_page_get_text_layout_for_area">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="PopplerRectangle*" name="area" />
           <parameter type="PopplerRectangle**" name="rectangles" />
           <parameter type="guint*" name="n_rectangles" />
         </parameters>
@@ -856,6 +1171,12 @@
       </method>
       <method name="GetType" cname="poppler_page_get_type" shared="true">
         <return-type type="GType" />
+      </method>
+      <method name="RemoveAnnot" cname="poppler_page_remove_annot">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="PopplerAnnot*" name="annot" />
+        </parameters>
       </method>
       <method name="Render" cname="poppler_page_render">
         <return-type type="void" />
@@ -900,7 +1221,7 @@
         </parameters>
       </method>
     </object>
-    <object name="PSFile" cname="PopplerPSFile" parent="GObject">
+    <object name="PSFile" cname="PopplerPSFile">
       <method name="Free" cname="poppler_ps_file_free">
         <return-type type="void" />
       </method>
@@ -927,6 +1248,218 @@
           <parameter type="double" name="width" />
           <parameter type="double" name="height" />
         </parameters>
+      </method>
+    </object>
+    <object name="StructureElement" cname="PopplerStructureElement">
+      <method name="GetAbbreviation" cname="poppler_structure_element_get_abbreviation">
+        <return-type type="gchar*" />
+      </method>
+      <method name="GetActualText" cname="poppler_structure_element_get_actual_text">
+        <return-type type="gchar*" />
+      </method>
+      <method name="GetAltText" cname="poppler_structure_element_get_alt_text">
+        <return-type type="gchar*" />
+      </method>
+      <method name="GetBackgroundColor" cname="poppler_structure_element_get_background_color">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="PopplerColor*" name="color" />
+        </parameters>
+      </method>
+      <method name="GetBaselineShift" cname="poppler_structure_element_get_baseline_shift">
+        <return-type type="gdouble" />
+      </method>
+      <method name="GetBlockAlign" cname="poppler_structure_element_get_block_align">
+        <return-type type="PopplerStructureBlockAlign" />
+      </method>
+      <method name="GetBorderColor" cname="poppler_structure_element_get_border_color">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="PopplerColor*" name="colors" />
+        </parameters>
+      </method>
+      <method name="GetBorderStyle" cname="poppler_structure_element_get_border_style">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="PopplerStructureBorderStyle*" name="border_styles" />
+        </parameters>
+      </method>
+      <method name="GetBorderThickness" cname="poppler_structure_element_get_border_thickness">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="gdouble*" name="border_thicknesses" />
+        </parameters>
+      </method>
+      <method name="GetBoundingBox" cname="poppler_structure_element_get_bounding_box">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="PopplerRectangle*" name="bounding_box" />
+        </parameters>
+      </method>
+      <method name="GetColor" cname="poppler_structure_element_get_color">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="PopplerColor*" name="color" />
+        </parameters>
+      </method>
+      <method name="GetColumnCount" cname="poppler_structure_element_get_column_count">
+        <return-type type="guint" />
+      </method>
+      <method name="GetColumnGaps" cname="poppler_structure_element_get_column_gaps">
+        <return-type type="gdouble*" />
+        <parameters>
+          <parameter type="guint*" name="n_values" />
+        </parameters>
+      </method>
+      <method name="GetColumnWidths" cname="poppler_structure_element_get_column_widths">
+        <return-type type="gdouble*" />
+        <parameters>
+          <parameter type="guint*" name="n_values" />
+        </parameters>
+      </method>
+      <method name="GetEndIndent" cname="poppler_structure_element_get_end_indent">
+        <return-type type="gdouble" />
+      </method>
+      <method name="GetFormDescription" cname="poppler_structure_element_get_form_description">
+        <return-type type="gchar*" />
+      </method>
+      <method name="GetFormRole" cname="poppler_structure_element_get_form_role">
+        <return-type type="PopplerStructureFormRole" />
+      </method>
+      <method name="GetFormState" cname="poppler_structure_element_get_form_state">
+        <return-type type="PopplerStructureFormState" />
+      </method>
+      <method name="GetGlyphOrientation" cname="poppler_structure_element_get_glyph_orientation">
+        <return-type type="PopplerStructureGlyphOrientation" />
+      </method>
+      <method name="GetHeight" cname="poppler_structure_element_get_height">
+        <return-type type="gdouble" />
+      </method>
+      <method name="GetId" cname="poppler_structure_element_get_id">
+        <return-type type="gchar*" />
+      </method>
+      <method name="GetInlineAlign" cname="poppler_structure_element_get_inline_align">
+        <return-type type="PopplerStructureInlineAlign" />
+      </method>
+      <method name="GetKind" cname="poppler_structure_element_get_kind">
+        <return-type type="PopplerStructureElementKind" />
+      </method>
+      <method name="GetLanguage" cname="poppler_structure_element_get_language">
+        <return-type type="gchar*" />
+      </method>
+      <method name="GetLineHeight" cname="poppler_structure_element_get_line_height">
+        <return-type type="gdouble" />
+      </method>
+      <method name="GetListNumbering" cname="poppler_structure_element_get_list_numbering">
+        <return-type type="PopplerStructureListNumbering" />
+      </method>
+      <method name="GetPadding" cname="poppler_structure_element_get_padding">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gdouble*" name="paddings" />
+        </parameters>
+      </method>
+      <method name="GetPage" cname="poppler_structure_element_get_page">
+        <return-type type="gint" />
+      </method>
+      <method name="GetPlacement" cname="poppler_structure_element_get_placement">
+        <return-type type="PopplerStructurePlacement" />
+      </method>
+      <method name="GetRubyAlign" cname="poppler_structure_element_get_ruby_align">
+        <return-type type="PopplerStructureRubyAlign" />
+      </method>
+      <method name="GetRubyPosition" cname="poppler_structure_element_get_ruby_position">
+        <return-type type="PopplerStructureRubyPosition" />
+      </method>
+      <method name="GetSpaceAfter" cname="poppler_structure_element_get_space_after">
+        <return-type type="gdouble" />
+      </method>
+      <method name="GetSpaceBefore" cname="poppler_structure_element_get_space_before">
+        <return-type type="gdouble" />
+      </method>
+      <method name="GetStartIndent" cname="poppler_structure_element_get_start_indent">
+        <return-type type="gdouble" />
+      </method>
+      <method name="GetTableBorderStyle" cname="poppler_structure_element_get_table_border_style">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="PopplerStructureBorderStyle*" name="border_styles" />
+        </parameters>
+      </method>
+      <method name="GetTableColumnSpan" cname="poppler_structure_element_get_table_column_span">
+        <return-type type="guint" />
+      </method>
+      <method name="GetTableHeaders" cname="poppler_structure_element_get_table_headers">
+        <return-type type="gchar**" />
+      </method>
+      <method name="GetTablePadding" cname="poppler_structure_element_get_table_padding">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gdouble*" name="paddings" />
+        </parameters>
+      </method>
+      <method name="GetTableRowSpan" cname="poppler_structure_element_get_table_row_span">
+        <return-type type="guint" />
+      </method>
+      <method name="GetTableScope" cname="poppler_structure_element_get_table_scope">
+        <return-type type="PopplerStructureTableScope" />
+      </method>
+      <method name="GetTableSummary" cname="poppler_structure_element_get_table_summary">
+        <return-type type="gchar*" />
+      </method>
+      <method name="GetText" cname="poppler_structure_element_get_text">
+        <return-type type="gchar*" />
+        <parameters>
+          <parameter type="PopplerStructureGetTextFlags" name="flags" />
+        </parameters>
+      </method>
+      <method name="GetTextAlign" cname="poppler_structure_element_get_text_align">
+        <return-type type="PopplerStructureTextAlign" />
+      </method>
+      <method name="GetTextDecorationColor" cname="poppler_structure_element_get_text_decoration_color">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="PopplerColor*" name="color" />
+        </parameters>
+      </method>
+      <method name="GetTextDecorationThickness" cname="poppler_structure_element_get_text_decoration_thickness">
+        <return-type type="gdouble" />
+      </method>
+      <method name="GetTextDecorationType" cname="poppler_structure_element_get_text_decoration_type">
+        <return-type type="PopplerStructureTextDecoration" />
+      </method>
+      <method name="GetTextIndent" cname="poppler_structure_element_get_text_indent">
+        <return-type type="gdouble" />
+      </method>
+      <method name="GetTextSpans" cname="poppler_structure_element_get_text_spans">
+        <return-type type="PopplerTextSpan**" />
+        <parameters>
+          <parameter type="guint*" name="n_text_spans" />
+        </parameters>
+      </method>
+      <method name="GetTitle" cname="poppler_structure_element_get_title">
+        <return-type type="gchar*" />
+      </method>
+      <method name="GetType" cname="poppler_structure_element_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="GetWidth" cname="poppler_structure_element_get_width">
+        <return-type type="gdouble" />
+      </method>
+      <method name="GetWritingMode" cname="poppler_structure_element_get_writing_mode">
+        <return-type type="PopplerStructureWritingMode" />
+      </method>
+      <method name="IsBlock" cname="poppler_structure_element_is_block">
+        <return-type type="gboolean" />
+      </method>
+      <method name="IsContent" cname="poppler_structure_element_is_content">
+        <return-type type="gboolean" />
+      </method>
+      <method name="IsGrouping" cname="poppler_structure_element_is_grouping">
+        <return-type type="gboolean" />
+      </method>
+      <method name="IsInline" cname="poppler_structure_element_is_inline">
+        <return-type type="gboolean" />
       </method>
     </object>
     <struct name="ActionAny" cname="PopplerActionAny">
@@ -1088,6 +1621,12 @@
           <parameter type="gboolean" name="is_open" />
         </parameters>
       </method>
+      <method name="SetPopupRectangle" cname="poppler_annot_markup_set_popup_rectangle">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="PopplerRectangle*" name="poppler_rect" />
+        </parameters>
+      </method>
     </struct>
     <struct name="Color" cname="PopplerColor" opaque="true">
       <field name="Red" cname="red" type="guint16" access="public" writeable="true" />
@@ -1133,6 +1672,9 @@
       <method name="Free" cname="poppler_fonts_iter_free">
         <return-type type="void" />
       </method>
+      <method name="GetEncoding" cname="poppler_fonts_iter_get_encoding">
+        <return-type type="const-char*" />
+      </method>
       <method name="GetFileName" cname="poppler_fonts_iter_get_file_name">
         <return-type type="const-char*" />
       </method>
@@ -1143,6 +1685,9 @@
         <return-type type="const-char*" />
       </method>
       <method name="GetName" cname="poppler_fonts_iter_get_name">
+        <return-type type="const-char*" />
+      </method>
+      <method name="GetSubstituteName" cname="poppler_fonts_iter_get_substitute_name">
         <return-type type="const-char*" />
       </method>
       <method name="GetType" cname="poppler_fonts_iter_get_type" shared="true">
@@ -1264,6 +1809,7 @@
       <field name="Angle" cname="angle" type="gint" access="public" writeable="true" />
       <field name="Scale" cname="scale" type="gdouble" access="public" writeable="true" />
       <field name="Rectangular" cname="rectangular" type="gboolean" access="public" writeable="true" />
+      <field name="DurationReal" cname="duration_real" type="gdouble" access="public" writeable="true" />
       <method name="Copy" cname="poppler_page_transition_copy">
         <return-type type="PopplerPageTransition*" owned="true" />
       </method>
@@ -1274,6 +1820,36 @@
         <return-type type="GType" />
       </method>
       <constructor cname="poppler_page_transition_new" />
+    </struct>
+    <struct name="Point" cname="PopplerPoint" opaque="true">
+      <field name="X" cname="x" type="gdouble" access="public" writeable="true" />
+      <field name="Y" cname="y" type="gdouble" access="public" writeable="true" />
+      <method name="Copy" cname="poppler_point_copy">
+        <return-type type="PopplerPoint*" owned="true" />
+      </method>
+      <method name="Free" cname="poppler_point_free">
+        <return-type type="void" />
+      </method>
+      <method name="GetType" cname="poppler_point_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="poppler_point_new" />
+    </struct>
+    <struct name="Quadrilateral" cname="PopplerQuadrilateral" opaque="true">
+      <field name="P1" cname="p1" type="PopplerPoint" access="public" writeable="true" />
+      <field name="P2" cname="p2" type="PopplerPoint" access="public" writeable="true" />
+      <field name="P3" cname="p3" type="PopplerPoint" access="public" writeable="true" />
+      <field name="P4" cname="p4" type="PopplerPoint" access="public" writeable="true" />
+      <method name="Copy" cname="poppler_quadrilateral_copy">
+        <return-type type="PopplerQuadrilateral*" owned="true" />
+      </method>
+      <method name="Free" cname="poppler_quadrilateral_free">
+        <return-type type="void" />
+      </method>
+      <method name="GetType" cname="poppler_quadrilateral_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="poppler_quadrilateral_new" />
     </struct>
     <struct name="Rectangle" cname="PopplerRectangle" opaque="true">
       <field name="X1" cname="x1" type="gdouble" access="public" writeable="true" />
@@ -1290,6 +1866,31 @@
         <return-type type="GType" />
       </method>
       <constructor cname="poppler_rectangle_new" />
+    </struct>
+    <struct name="StructureElementIter" cname="PopplerStructureElementIter" opaque="true">
+      <method name="Copy" cname="poppler_structure_element_iter_copy">
+        <return-type type="PopplerStructureElementIter*" owned="true" />
+      </method>
+      <method name="Free" cname="poppler_structure_element_iter_free">
+        <return-type type="void" />
+      </method>
+      <method name="GetChild" cname="poppler_structure_element_iter_get_child">
+        <return-type type="PopplerStructureElementIter*" />
+      </method>
+      <method name="GetElement" cname="poppler_structure_element_iter_get_element">
+        <return-type type="PopplerStructureElement*" />
+      </method>
+      <method name="GetType" cname="poppler_structure_element_iter_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="poppler_structure_element_iter_new">
+        <parameters>
+          <parameter type="PopplerDocument*" name="poppler_document" />
+        </parameters>
+      </constructor>
+      <method name="Next" cname="poppler_structure_element_iter_next">
+        <return-type type="gboolean" />
+      </method>
     </struct>
     <struct name="TextAttributes" cname="PopplerTextAttributes" opaque="true">
       <field name="FontName" cname="font_name" type="gchar*" access="public" writeable="true" />
@@ -1308,6 +1909,38 @@
         <return-type type="GType" />
       </method>
       <constructor cname="poppler_text_attributes_new" />
+    </struct>
+    <struct name="TextSpan" cname="PopplerTextSpan" opaque="true">
+      <method name="Copy" cname="poppler_text_span_copy">
+        <return-type type="PopplerTextSpan*" owned="true" />
+      </method>
+      <method name="Free" cname="poppler_text_span_free">
+        <return-type type="void" />
+      </method>
+      <method name="GetColor" cname="poppler_text_span_get_color">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="PopplerColor*" name="color" />
+        </parameters>
+      </method>
+      <method name="GetFontName" cname="poppler_text_span_get_font_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetText" cname="poppler_text_span_get_text">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetType" cname="poppler_text_span_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="IsBoldFont" cname="poppler_text_span_is_bold_font">
+        <return-type type="gboolean" />
+      </method>
+      <method name="IsFixedWidthFont" cname="poppler_text_span_is_fixed_width_font">
+        <return-type type="gboolean" />
+      </method>
+      <method name="IsSerifFont" cname="poppler_text_span_is_serif_font">
+        <return-type type="gboolean" />
+      </method>
     </struct>
     <class name="Global" cname="PopplerGlobal">
       <method name="DateParse" cname="poppler_date_parse" shared="true">
